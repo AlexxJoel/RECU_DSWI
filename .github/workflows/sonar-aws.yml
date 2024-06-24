@@ -60,6 +60,8 @@ jobs:
           pip install aws-sam-cli
 
       - name: Build and Deploy
+        env:
+          SAM_CLI_TELEMETRY: 0
         run: |
           sam build
           sam deploy --stack-name lamda --capabilities CAPABILITY_IAM --no-confirm-changeset --no-fail-on-empty-changeset
