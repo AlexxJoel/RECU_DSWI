@@ -5,7 +5,7 @@ codeuri = "D:\\Github\\RECU_DSWI\\CRUD_PERSON\\create"
 runtime = "python3.12"
 architecture = "x86_64"
 handler = "app.lambda_handler"
-manifest_hash = "2179d22e966044d696f2de747b75876d"
+manifest_hash = "b26f5eab2f3f8f337d23daf54f8dcccc"
 packagetype = "Zip"
 functions = ["CreatePersonFunction"]
 
