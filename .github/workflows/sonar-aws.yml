@@ -62,4 +62,4 @@ jobs:
       - name: Build and Deploy
         run: |
           sam build
-          sam deploy --stack-name lamda --region us-west-1 --capabilities CAPABILITY_IAM --no-confirm-changeset --no-fail-on-empty-changeset --resolve-s3 --config-env GitHubActions
+          sam deploy --stack-name lamda --capabilities CAPABILITY_IAM --no-confirm-changeset --no-fail-on-empty-changeset
