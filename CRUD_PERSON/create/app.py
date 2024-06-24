@@ -40,7 +40,7 @@ def lambda_handler(event, _context):
 
         result = transaction_db(conn, query, values)
 
-        return {"statusCode": 200, "body": json.dumps({"data": "Person created successfully", "id": result[0][0]})}
+        return {"statusCode": 200, "body": json.dumps({"data": "Person created successfully", "result": result})}
 
     except Exception as e:
         return {"statusCode": 500, "body": json.dumps({"error": str(e)})}
