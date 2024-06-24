@@ -53,9 +53,9 @@ def connection_db_postgres(host, user, password, database):
     return conn_db
 
 
-def transaction_db(conn, query, values):
-    cur = conn.cursor()
-    conn.autocommit = False
+def transaction_db(conn_db, query, values):
+    cur = conn_db.cursor()
+    conn_db.autocommit = False
 
     cur.execute(query, values)
 
@@ -64,7 +64,7 @@ def transaction_db(conn, query, values):
     else:
         result = cur.rowcount
 
-    conn.commit()
+    conn_db.commit()
     cur.close()
 
     return result
