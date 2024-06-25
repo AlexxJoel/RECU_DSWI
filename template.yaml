@@ -15,13 +15,15 @@ Resources:
   PeopleApi:
     Type: AWS::Serverless::Api
     Properties:
-        Name: PeopleApi
-        StageName: Dev
-#  People
-  CreatePersonFunction:
+      Name: PeopleApi
+      StageName: Dev
+
+
+  #  People
+  ReadPersonFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: CRUD_PERSON/create/
+      CodeUri: CRUD_PERSON/read_one/
       Handler: app.lambda_handler
       Runtime: python3.12
       Architectures:
@@ -31,9 +33,24 @@ Resources:
           Type: Api
           Properties:
             RestApiId: !Ref PeopleApi
-            Path: /people
-            Method: POST
+            Path: /people/{id}
+            Method: GET
 
+  UpdatePersonFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: CRUD_PERSON/update/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Events:
+        CreatePerson:
+          Type: Api
+          Properties:
+            RestApiId: !Ref PeopleApi
+            Path: /people/{id}
+            Method: PUT
 
 Outputs:
   PeopleApi:
