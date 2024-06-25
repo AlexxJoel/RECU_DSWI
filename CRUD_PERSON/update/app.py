@@ -1,7 +1,7 @@
 import json
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from validations.functions import validate_connection, validate_event_path_params, validate_id, validate_event_body, \
+from validations.functions import validate_connection, validate_id, validate_event_body, \
     validation_payload
 
 
@@ -21,32 +21,29 @@ def lambda_handler(event, _context):
         if valid_conn_res is not None:
             return valid_conn_res
 
-        # Validate params
-        valid_event_path = validate_event_path_params(event)
-        if valid_event_path is not None:
-            return valid_event_path
+        # Validate body in event
+        valid_event_body_res = validate_event_body(event)
+        if valid_event_body_res is not None:
+            return valid_event_body_res
 
-        valid_id = validate_id(event)
+        request_body = json.loads(event['body'])
+
+        valid_id = validate_id(request_body)
         if valid_id is not None:
             return valid_id
 
         # Get values from path params
-        id = event['pathParameters']['id']
+        id = request_body['id']
+
         # create transaction
         query = """ SELECT * FROM recu_people WHERE id = %s """
 
         result = transaction_db(conn, query, (id,))
 
         if not result:
-            return {"statusCode": 204, "body": json.dumps({"error": "Person not found"})}
-
-        # Validate body in event
-        valid_event_body_res = validate_event_body(event)
-        if valid_event_body_res is not None:
-            return valid_event_body_res
+            return {"statusCode": 204, "body": json.dumps({"error": "Person not found", "result": result})}
 
         # Validate payload
-        request_body = json.loads(event['body'])
         valid_payload_res = validation_payload(request_body)
         if valid_payload_res is not None:
             return valid_payload_res

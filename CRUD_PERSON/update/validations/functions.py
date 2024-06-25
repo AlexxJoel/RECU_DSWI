@@ -14,25 +14,6 @@ def validate_connection(conn):
     return None
 
 
-def validate_event_path_params(event):
-    if "pathParameters" not in event:
-        return {"statusCode": 400, "body": json.dumps({"error": "Path parameters is missing from the request."})}
-
-    if not event["pathParameters"]:
-        return {"statusCode": 400, "body": json.dumps({"error": "Path parameters is null."})}
-
-
-def validate_id(event):
-    try:
-        event['pathParameters']['id'] = int(event['pathParameters']['id'])
-    except ValueError:
-        return {"statusCode": 400, "body": json.dumps({"error": "Request ID data type is wrong."})}
-
-    if event['pathParameters']['id'] <= 0:
-        return {"statusCode": 400, "body": json.dumps({"error": "Request ID invalid value."})}
-    return None
-
-
 def validate_event_body(event):
     if "body" not in event:
         return {"statusCode": 400, "body": json.dumps({"error": "No body provided."})}
@@ -52,6 +33,16 @@ def validate_event_body(event):
         return {"statusCode": 400, "body": json.dumps({"error": "The request body is not valid JSON"})}
 
     return None
+
+
+def validate_id(payload):
+    if "id" not in payload or not isinstance(payload["id"], int):
+        return {"statusCode": 400, "body": json.dumps({"error": "Invalid or missing 'id'"})}
+
+    if payload["id"] <= 0:
+        return {"statusCode": 400, "body": json.dumps({"error": "Invalid 'id' format"})}
+    return None
+
 
 def validation_payload(payload):
     # check first required fields
