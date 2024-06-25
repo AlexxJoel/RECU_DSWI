@@ -6,9 +6,11 @@ Description: >
   Sample SAM Template for lamda
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 25
+    MemorySize: 128
 
 Resources:
   LambdaExecutionRole:
@@ -78,7 +80,7 @@ Resources:
 Outputs:
   PeopleApi:
     Description: "API Gateway endpoint URL for Prod stage for PeopleApi"
-    Value: !Sub "https://${PeopleApi}.execute-api.${AWS::Region}.amazonaws.com/Dev/"
+    Value: !Sub "https://${PeopleApi}.execute-api.${AWS::Region}.amazonaws.com/Dev/people/"
   UpdatePersonFunction:
     Description: "Update Person Lambda Function ARN"
     Value: !GetAtt UpdatePersonFunction.Arn
