@@ -33,12 +33,12 @@ def lambda_handler(event, _context):
             return valid_id
 
         # Get values from path params
-        id = request_body['id']
+        id_payload = request_body['id']
 
         # create transaction
         query = """ SELECT * FROM recu_people WHERE id = %s """
 
-        result = transaction_db(conn, query, (id,))
+        result = transaction_db(conn, query, (id_payload,))
 
         if not result:
             return {"statusCode": 204, "body": json.dumps({"error": "Person not found", "result": result})}
@@ -54,7 +54,7 @@ def lambda_handler(event, _context):
 
         # create transaction
         query = """ UPDATE recu_people SET name = %s, age = %s WHERE id = %s RETURNING id """
-        values = (name, age, id)
+        values = (name, age, id_payload)
 
         result = transaction_db(conn, query, values)
 
