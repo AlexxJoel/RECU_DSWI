@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "9db82824-5592-4eab-ab08-457defc178f9",
+		"name": "Collecion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23848688"
+	},
+	"item": [
+		{
+			"name": "Updtae",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"Alejandro Joel Herrera\",\r\n    \"age\": 21\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cu3jh6rcea.execute-api.us-west-1.amazonaws.com/Dev/people",
+					"protocol": "https",
+					"host": [
+						"cu3jh6rcea",
+						"execute-api",
+						"us-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Dev",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updtae age string",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"Alejandro Joel Herrera\",\r\n    \"age\": \"joel\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cu3jh6rcea.execute-api.us-west-1.amazonaws.com/Dev/people",
+					"protocol": "https",
+					"host": [
+						"cu3jh6rcea",
+						"execute-api",
+						"us-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Dev",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updtae no body",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cu3jh6rcea.execute-api.us-west-1.amazonaws.com/Dev/people",
+					"protocol": "https",
+					"host": [
+						"cu3jh6rcea",
+						"execute-api",
+						"us-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Dev",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updtae no user found",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cu3jh6rcea.execute-api.us-west-1.amazonaws.com/Dev/people",
+					"protocol": "https",
+					"host": [
+						"cu3jh6rcea",
+						"execute-api",
+						"us-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Dev",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updtae id string",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"joel\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cu3jh6rcea.execute-api.us-west-1.amazonaws.com/Dev/people",
+					"protocol": "https",
+					"host": [
+						"cu3jh6rcea",
+						"execute-api",
+						"us-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Dev",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_one",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://7upehmrkv5.execute-api.us-west-1.amazonaws.com/Dev/people/11",
+					"protocol": "https",
+					"host": [
+						"7upehmrkv5",
+						"execute-api",
+						"us-west-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Dev",
+						"people",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
