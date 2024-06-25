@@ -50,6 +50,24 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
+      - name: Convert requirements.txt to UTF-8 read_one
+        run: |
+          iconv -f utf-16le -t utf-8 ./CRUD_PERSON/read_one/requirements.txt -o ./CRUD_PERSON/read_one/requirements.txt
+
+
+      - name: install dependencies read_one
+        run: |
+          if [ -f CRUD_PERSON/read_one/requirements.txt ]; then pip install -r CRUD_PERSON/read_one/requirements.txt; fi
+
+      - name: Convert requirements.txt to UTF-8 update
+        run: |
+          iconv -f utf-16le -t utf-8 ./CRUD_PERSON/update/requirements.txt -o ./CRUD_PERSON/update/requirements.txt
+
+      - name: install dependencies update
+        run: |
+          if [ -f CRUD_PERSON/update/requirements.txt ]; then pip install -r CRUD_PERSON/update/requirements.txt; fi
+      
+
       - name: Install AWS CLI
         run: |
           sudo apt-get update
