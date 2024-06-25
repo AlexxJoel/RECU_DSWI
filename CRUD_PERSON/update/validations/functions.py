@@ -22,10 +22,16 @@ def validate_event_path_params(event):
         return {"statusCode": 400, "body": json.dumps({"error": "Path parameters is null."})}
 
 
-def validate_id(value):
-    if value <= 0:
+def validate_id(event):
+    try:
+        event['pathParameters']['id'] = int(event['pathParameters']['id'])
+    except ValueError:
+        return {"statusCode": 400, "body": json.dumps({"error": "Request ID data type is wrong."})}
+
+    if event['pathParameters']['id'] <= 0:
         return {"statusCode": 400, "body": json.dumps({"error": "Request ID invalid value."})}
     return None
+
 
 def validate_event_body(event):
     if "body" not in event:
