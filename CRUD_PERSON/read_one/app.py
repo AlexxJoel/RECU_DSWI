@@ -39,7 +39,7 @@ def lambda_handler(event, _context):
         if not result:
             return {"statusCode": 204, "body": json.dumps({"error": "Person not found"})}
 
-        return {"statusCode": 200, "body": json.dumps({"data": "Person created successfully", "result": result})}
+        return {"statusCode": 200, "body": json.dumps({"data": "Person found", "result": result})}
 
     except Exception as e:
         return {"statusCode": 500, "body": json.dumps({"error": str(e)})}
