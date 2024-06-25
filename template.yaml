@@ -48,7 +48,7 @@ Resources:
           Type: Api
           Properties:
             RestApiId: !Ref PeopleApi
-            Path: /people/{id}
+            Path: /people/
             Method: PUT
 
 Outputs:
